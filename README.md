@@ -1,206 +1,209 @@
-# 소셜피드 - 인스타그램 스타일 소셜 앱
+# Learning Spoons Project
 
-인스타그램과 같은 깔끔하고 시각적인 디자인의 소셜 미디어 웹 애플리케이션입니다.
+이 프로젝트는 Netlify로 배포된 `iridescent-biscochitos-56024b.netlify.app`의 소스 코드입니다.
+
+## 🎯 프로젝트 개요
+
+Learning Spoons는 교육 과정을 관리하는 웹 애플리케이션입니다. 강의 관리, 등록, 대시보드 등의 기능을 제공합니다.
 
 ## ✨ 주요 기능
 
-### 📱 반응형 디자인
-- 데스크톱, 태블릿, 모바일 모든 기기에서 최적화된 경험
-- 모바일 우선 설계로 스마트폰에서도 완벽하게 작동
-
-### 🎨 시각적 요소
-- 인스타그램과 유사한 깔끔한 UI/UX
-- 그라데이션 스토리 아바타
-- 부드러운 애니메이션과 호버 효과
-- 직관적인 아이콘과 버튼
-
-### 📖 피드 시스템
-- 스크롤 가능한 스토리 섹션
-- 이미지 중심의 게시물 피드
-- 좋아요, 댓글, 북마크 기능
-- 실시간 상호작용
-
-### 🔍 검색 기능
-- 사용자명, 게시물 내용, 위치 기반 검색
-- 실시간 검색 결과 필터링
-
-### 👥 소셜 기능
-- 사용자 프로필 및 아바타
-- 팔로우/팔로워 시스템 (UI만 구현)
-- 댓글 작성 및 표시
-- 좋아요 및 북마크
-
-## 🚀 샘플 데이터
-
-20-30대 직장인들이 실제로 올릴 만한 자연스러운 게시물들로 구성:
-
-- **김민수**: 카페에서 일하는 모습, 맛집 탐방
-- **이지은**: 건강한 점심 준비, 독서 모습
-- **박준호**: 팀 프로젝트 마감, 업무 현장
-- **최수진**: 주말 등산, 취미 활동
+- **대시보드**: 전체 현황 및 통계 확인
+- **강의 관리**: 강의 정보 등록, 수정, 삭제
+- **강의 등록**: 새로운 강의 등록 및 관리
+- **반응형 디자인**: 모든 기기에서 최적화된 경험
 
 ## 🛠️ 기술 스택
 
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
 - **UI Framework**: 순수 CSS (커스텀 디자인)
 - **Backend**: Supabase (PostgreSQL + 실시간 API)
-- **Authentication**: Supabase Auth (익명 인증)
-- **Icons**: Font Awesome 6.0
-- **Fonts**: Noto Sans KR (한글 최적화)
-- **Images**: Unsplash API (고품질 무료 이미지)
+- **배포**: Netlify
+- **버전 관리**: Git & GitHub
 
 ## 📁 프로젝트 구조
 
 ```
-project-root/
-├── index.html              # 메인 HTML 파일
-├── env.config.js           # 환경변수 설정 파일
+learning-spoons/
+├── index.html                    # 메인 페이지
+├── dashboard.html                # 대시보드
+├── course-management.html        # 강의 관리
+├── course-registration.html      # 강의 등록
+├── maindashboard.html           # 메인 대시보드
 ├── css/
-│   └── style.css          # 스타일시트
+│   └── style.css               # 스타일시트
 ├── js/
-│   ├── config.js          # Supabase 설정 및 초기화
-│   └── app.js             # 메인 JavaScript 로직
+│   ├── app.js                  # 메인 앱 로직
+│   ├── config.js               # 설정 파일
+│   ├── dashboard.js            # 대시보드 로직
+│   ├── course-management.js    # 강의 관리 로직
+│   ├── course-registration.js  # 강의 등록 로직
+│   ├── inventory.js            # 재고 관리
+│   ├── savings.js              # 저축 관리
+│   ├── storage.js              # 저장소 관리
+│   ├── streak.js               # 연속 기록
+│   └── tempt.js                # 임시 기능
 ├── assets/
-│   └── icons/             # 아이콘 파일들
-├── supabase-schema.sql     # 데이터베이스 스키마
-├── sample-data.sql         # 샘플 데이터
-├── SUPABASE_SETUP.md       # Supabase 설정 가이드
-├── ENVIRONMENT_SETUP.md    # 환경변수 설정 가이드
-└── README.md               # 프로젝트 설명서
+│   └── icons/                  # 아이콘 파일들
+├── netlify-deploy-final/       # Netlify 배포용 파일
+├── sample-data.sql             # 샘플 데이터
+├── supabase-schema.sql         # 데이터베이스 스키마
+├── SUPABASE_SETUP.md           # Supabase 설정 가이드
+├── ENVIRONMENT_SETUP.md        # 환경변수 설정 가이드
+├── TEAM_SETUP_GUIDE.md         # 팀원 개발 환경 설정 가이드
+└── README.md                   # 프로젝트 설명서
 ```
 
-## 🎯 주요 컴포넌트
+## 🚀 시작하기
 
-### 1. 헤더 (Header)
-- 로고 및 브랜딩
-- 검색 바
-- 네비게이션 아이콘 (홈, 메시지, 탐색, 좋아요, 프로필)
+### 팀원들을 위한 빠른 시작
 
-### 2. 스토리 섹션 (Stories)
-- 가로 스크롤 가능한 스토리 목록
-- 그라데이션 테두리 아바타
-- 스토리 추가 버튼
-
-### 3. 피드 섹션 (Feed)
-- 게시물 카드 형태
-- 사용자 정보, 이미지, 캡션
-- 상호작용 버튼 (좋아요, 댓글, 공유, 북마크)
-- 댓글 시스템
-
-### 4. 사이드바 (Sidebar)
-- 사용자 프로필
-- 추천 사용자 목록
-- 팔로우 버튼
-
-### 5. 모바일 네비게이션
-- 하단 고정 네비게이션
-- 홈, 검색, 게시, 활동, 프로필
-
-## 🎨 CSS 특징
-
-### 반응형 그리드 시스템
-```css
-.content-container {
-    display: grid;
-    grid-template-columns: 1fr 614px 300px;
-    gap: 32px;
-}
-```
-
-### 모던한 디자인 요소
-- CSS Grid와 Flexbox 활용
-- 부드러운 트랜지션과 애니메이션
-- 호버 효과와 마이크로 인터랙션
-- 그림자와 테두리로 깊이감 표현
-
-### 색상 팔레트
-- **Primary**: #0095f6 (인스타그램 블루)
-- **Text**: #262626 (진한 회색)
-- **Secondary**: #8e8e8e (연한 회색)
-- **Background**: #fafafa (아주 연한 회색)
-- **Border**: #dbdbdb (중간 회색)
-
-## ⚡ JavaScript 기능
-
-### 클래스 기반 아키텍처
-- `SocialApp` 클래스로 모든 기능 관리
-- 모듈화된 메서드 구조
-- 이벤트 위임으로 성능 최적화
-
-### 주요 기능들
-- 게시물 렌더링 및 관리
-- 좋아요/북마크 토글
-- 댓글 작성 및 표시
-- 검색 및 필터링
-- 무한 스크롤 (기본 구조)
-
-### 이벤트 처리
-- 클릭 이벤트 (좋아요, 북마크, 댓글)
-- 입력 이벤트 (댓글 작성)
-- 키보드 이벤트 (Enter로 댓글 게시)
-- 스크롤 이벤트 (무한 스크롤)
-
-## 📱 반응형 브레이크포인트
-
-```css
-/* 데스크톱 */
-@media (max-width: 1024px) {
-    /* 사이드바 숨김 */
-}
-
-/* 태블릿 */
-@media (max-width: 768px) {
-    /* 검색바 숨김, 모바일 네비게이션 표시 */
-}
-
-/* 모바일 */
-@media (max-width: 480px) {
-    /* 여백 조정, 터치 친화적 UI */
-}
-```
-
-## 🚀 실행 방법
-
-### 1. Supabase 설정 (필수)
-1. [Supabase](https://supabase.com)에서 새 프로젝트 생성
-2. **SQL Editor**에서 `supabase-schema.sql` 실행
-3. **샘플 데이터**로 `sample-data.sql` 실행
-4. **Authentication** → **Providers**에서 Anonymous 인증 활성화
-
-### 2. 앱 실행
-1. 프로젝트 폴더로 이동
-2. `index.html` 파일을 웹 브라우저에서 열기
-3. 또는 로컬 서버 실행:
+1. **저장소 클론**
    ```bash
-   # Python 3
-   python -m http.server 8000
-   
-   # Node.js
-   npx serve .
+   git clone https://github.com/showmealice/learning-spoons.git
+   cd learning-spoons
    ```
 
-### 3. 환경변수 확인
-브라우저 콘솔에서 다음 메시지 확인:
+2. **로컬에서 실행**
+   ```bash
+   # Python 3
+   python3 -m http.server 8000
+   
+   # 또는 Python 2
+   python -m SimpleHTTPServer 8000
+   
+   # 또는 Node.js
+   npx http-server
+   ```
+
+3. **브라우저에서 확인**
+   - `http://localhost:8000` 접속
+   - `http://localhost:8000/dashboard.html` (대시보드)
+   - `http://localhost:8000/course-management.html` (강의 관리)
+
+### 상세한 개발 환경 설정
+
+팀원들을 위한 자세한 설정 가이드는 **[TEAM_SETUP_GUIDE.md](./TEAM_SETUP_GUIDE.md)**를 참고하세요.
+
+## 🔧 개발 워크플로우
+
+### 1. 새 기능 개발
+```bash
+# 1. 최신 코드 가져오기
+git pull origin main
+
+# 2. 새 브랜치 생성
+git checkout -b feature/새기능이름
+
+# 3. 코드 수정 작업
+# (파일 편집)
+
+# 4. 변경사항 커밋
+git add .
+git commit -m "새 기능 추가: 설명"
+
+# 5. 브랜치 푸시
+git push origin feature/새기능이름
 ```
-✅ 환경변수 설정이 완료되었습니다.
-🌍 현재 환경: development
-🔗 Supabase URL: https://[project-id].supabase.co
-✅ Supabase 클라이언트가 환경변수로 초기화되었습니다.
+
+### 2. Pull Request 생성
+1. GitHub 웹사이트에서 저장소 접속
+2. "Compare & pull request" 버튼 클릭
+3. 제목과 설명 작성
+4. 팀원들에게 리뷰 요청
+5. 승인 후 메인 브랜치에 병합
+
+## 🌐 배포 정보
+
+- **배포 URL**: https://iridescent-biscochitos-56024b.netlify.app
+- **배포 플랫폼**: Netlify
+- **자동 배포**: GitHub main 브랜치와 연동
+
+## 📱 페이지별 기능
+
+### 1. 메인 페이지 (`index.html`)
+- 프로젝트 소개 및 네비게이션
+- 주요 기능 안내
+
+### 2. 대시보드 (`dashboard.html`)
+- 전체 현황 대시보드
+- 통계 및 차트
+- 빠른 액션 버튼
+
+### 3. 강의 관리 (`course-management.html`)
+- 강의 목록 조회
+- 강의 정보 수정/삭제
+- 강의 상태 관리
+
+### 4. 강의 등록 (`course-registration.html`)
+- 새로운 강의 등록
+- 강의 정보 입력 폼
+- 유효성 검사
+
+## 🔍 자주 사용하는 Git 명령어
+
+```bash
+# 현재 상태 확인
+git status
+
+# 변경사항 확인
+git diff
+
+# 모든 변경사항 추가
+git add .
+
+# 커밋
+git commit -m "커밋 메시지"
+
+# 푸시
+git push origin 브랜치명
+
+# 최신 코드 가져오기
+git pull origin main
+
+# 브랜치 목록 확인
+git branch
+
+# 브랜치 전환
+git checkout 브랜치명
 ```
 
-## 🔮 향후 개발 계획
+## 🚨 주의사항
 
-### 단기 목표
-- [ ] 사용자 인증 시스템
-- [ ] 게시물 업로드 기능
-- [ ] 실시간 알림
-- [ ] 다크 모드
+1. **직접 main 브랜치에 커밋하지 마세요**
+   - 항상 새 브랜치를 만들어서 작업
+   - Pull Request를 통해 코드 리뷰 후 병합
 
-### 장기 목표
-- [ ] 백엔드 API 연동
-- [ ] 실시간 채팅
-- [ ] 스토리 기능
-- [ ] PWA 지원
+2. **커밋 메시지는 명확하게**
+   - "수정" ❌
+   - "강의 등록 폼 유효성 검사 추가" ✅
+
+3. **작업 전 항상 최신 코드 가져오기**
+   - `git pull origin main` 실행
+
+## 🆘 문제 해결
+
+### Git 인증 오류
+```bash
+# Personal Access Token 사용
+# GitHub → Settings → Developer settings → Personal access tokens
+# 토큰 생성 후 비밀번호 대신 사용
+```
+
+### 충돌 해결
+```bash
+# 충돌 발생 시
+git status
+# 충돌 파일 수정 후
+git add .
+git commit -m "충돌 해결"
+```
+
+## 📞 도움이 필요할 때
+
+- GitHub Issues에 문제 등록
+- 팀 채팅방에서 질문
+- 코드 리뷰 요청 시 상세한 설명 첨부
 
 ## 🤝 기여하기
 
@@ -211,114 +214,8 @@ project-root/
 
 ## 📄 라이선스
 
-이 프로젝트는 MIT 라이선스 하에 배포됩니다.
-
-## 👨‍💻 개발자
-
-개발 문의사항이나 버그 리포트는 이슈로 등록해주세요.
-
----
-
-**소셜피드**로 당신의 일상을 아름답게 공유하세요! ✨
-
-# 어드민 기수추가 시스템
-
-이 프로젝트는 교육 과정을 관리하는 어드민 시스템의 홈페이지 예시입니다. React 컴포넌트를 바탕으로 순수 HTML, CSS, JavaScript로 구현되었습니다.
-
-## 주요 기능
-
-### 🎯 과정 정보 관리
-- 과정명과 설명 입력
-- 실시간 폼 유효성 검사
-- 사용자 친화적인 인터페이스
-
-### 🤖 AI 기반 추천 시스템
-- **SEO 키워드 추천**: 과정명을 기반으로 최적화된 검색 키워드 자동 생성
-- **HTML/CSS 코드 추천**: 과정 정보를 바탕으로 웹페이지 코드 자동 생성
-- 탭 기반 코드 미리보기 (HTML/CSS)
-
-### 💾 데이터 관리
-- 과정 정보 저장 및 관리
-- 생성된 코드와 키워드 저장
-- 폼 데이터 초기화 기능
-
-## 기술 스택
-
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript
-- **UI/UX**: 모던한 카드 기반 디자인, 반응형 레이아웃
-- **AI 기능**: 시뮬레이션 기반 (실제 구현 시 API 연동 가능)
-
-## 파일 구조
-
-```
-project-root/
-├── index.html          # 메인 홈페이지
-├── css/
-│   └── style.css      # 스타일시트
-├── js/
-│   └── app.js         # JavaScript 기능
-└── README.md          # 프로젝트 설명서
-```
-
-## 사용 방법
-
-### 1. 과정 정보 입력
-- 과정명과 설명을 입력합니다
-- 필수 필드 검증이 자동으로 수행됩니다
-
-### 2. AI SEO 추천
-- "AI 추천 받기" 버튼을 클릭합니다
-- 과정명을 기반으로 SEO 키워드가 자동 생성됩니다
-
-### 3. AI 코드 생성
-- "AI 코드 미리보기" 버튼을 클릭합니다
-- HTML과 CSS 코드가 자동으로 생성됩니다
-- 탭을 통해 HTML과 CSS를 전환하여 확인할 수 있습니다
-
-### 4. 저장
-- "저장하기" 버튼을 클릭하여 모든 정보를 저장합니다
-- 저장 완료 후 폼이 자동으로 초기화됩니다
-
-## 주요 컴포넌트
-
-### 카드 시스템
-- **과정 정보 카드**: 기본 정보 입력
-- **SEO 키워드 카드**: AI 기반 키워드 추천
-- **코드 추천 카드**: HTML/CSS 코드 생성 및 미리보기
-
-### 탭 인터페이스
-- HTML과 CSS 코드를 별도 탭으로 분리
-- 직관적인 전환 및 미리보기
-
-### 반응형 디자인
-- 모바일, 태블릿, 데스크톱 모든 기기 지원
-- 터치 친화적인 인터페이스
-
-## AI 기능 상세
-
-### SEO 키워드 생성
-- 과정명 기반 자동 키워드 확장
-- 검색 최적화를 위한 관련 용어 자동 추가
-- 실시간 처리 및 결과 표시
-
-### 코드 생성
-- 과정 정보를 바탕으로 완성된 웹페이지 코드 생성
-- 반응형 디자인이 적용된 HTML/CSS
-- 실제 배포 가능한 수준의 코드 품질
-
-## 향후 개발 계획
-
-- [ ] 실제 AI API 연동
-- [ ] 데이터베이스 연동
-- [ ] 사용자 인증 시스템
-- [ ] 과정 템플릿 시스템
-- [ ] 실시간 협업 기능
-
-## 라이선스
-
 이 프로젝트는 교육 목적으로 제작되었습니다.
 
 ---
 
-**개발자**: AI Assistant  
-**최종 업데이트**: 2024년 12월
+**Happy Coding! 🎉**
