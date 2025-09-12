@@ -1,0 +1,54 @@
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependencies
+node_modules/
+bower_components/
+
+# Build outputs
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Temporary files
+*.tmp
+*.temp
+
+# Archive files (keep only the latest versions)
+*.zip
+!runningspoons-admin-final-v13.zip
+
+# Backup folders (keep only the main one)
+netlify-deploy-final 2/
+runningspoons-admin-final/
+
+# Old backup files
+runningspoons-admin-complete-v2.zip
+runningspoons-admin-final-v9.zip
+runningspoons-admin-final-v4.zip
+netlify-deploy.zip
+netlify-deploy-final.zip

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>어드민 기수추가 시스템</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 -->
+        <header class="header">
+            <h1 class="main-title">어드민 기수추가 시스템</h1>
+            <p class="subtitle">새로운 기수를 쉽고 효율적으로 추가하세요</p>
+        </header>
+
+        <!-- 메인 콘텐츠 -->
+        <main class="main-content">
+            <!-- 과정 정보 카드 -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">과정 정보</h2>
+                </div>
+                <div class="card-content">
+                    <div class="form-group">
+                        <label for="courseName">과정명</label>
+                        <input type="text" id="courseName" placeholder="과정명을 입력하세요" class="input-field">
+                    </div>
+                    <div class="form-group">
+                        <label for="courseDescription">과정 설명</label>
+                        <textarea id="courseDescription" placeholder="과정 설명을 입력하세요" class="textarea-field" rows="4"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI SEO 추천 카드 -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">SEO 키워드 추천</h2>
+                    <button class="ai-button">
+                        <span class="sparkle-icon">✨</span>
+                        AI 추천 받기
+                    </button>
+                </div>
+                <div class="card-content">
+                    <div class="form-group">
+                        <label for="seoKeywords">SEO 키워드</label>
+                        <textarea id="seoKeywords" placeholder="AI가 추천한 키워드가 여기에 표시됩니다." class="textarea-field" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI HTML/CSS 추천 카드 -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">HTML/CSS 코드 추천</h2>
+                </div>
+                <div class="card-content">
+                    <div class="tabs">
+                        <div class="tab-buttons">
+                            <button class="tab-button active" data-tab="html">HTML</button>
+                            <button class="tab-button" data-tab="css">CSS</button>
+                        </div>
+                        
+                        <div class="tab-content active" id="html-tab">
+                            <div class="form-group">
+                                <label for="htmlCode">HTML 코드</label>
+                                <textarea id="htmlCode" placeholder="추천된 HTML 코드가 여기에 표시됩니다." class="code-textarea" rows="8"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="css-tab">
+                            <div class="form-group">
+                                <label for="cssCode">CSS 코드</label>
+                                <textarea id="cssCode" placeholder="추천된 CSS 코드가 여기에 표시됩니다." class="code-textarea" rows="8"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-actions">
+                        <button class="ai-preview-button">AI 코드 미리보기</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 저장 버튼 -->
+            <div class="save-section">
+                <button class="save-button">저장하기</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

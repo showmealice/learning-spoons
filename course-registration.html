@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>러닝스푼즈 어드민 - 강의 등록</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@200;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="course-register-page">
+    <div class="app-shell">
+        <!-- 사이드바 -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2 class="logo">러닝스푼즈</h2>
+                <p class="logo-subtitle">User</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">대시보드</span>
+                </a>
+                <a href="course-management.html" class="nav-item">
+                    <span class="nav-icon">📚</span>
+                    <span class="nav-text">강의 관리</span>
+                </a>
+                <a href="course-registration.html" class="nav-item active">
+                    <span class="nav-icon">➕</span>
+                    <span class="nav-text">강의 등록</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- 페이지 콘텐츠 -->
+        <main class="main-content">
+            <!-- 대시보드와 동일한 컨테이너 폭 변수 -->
+            <div style="--content-max: 1200px;"></div>
+            
+            <!-- 대시보드와 같은 컨테이너 폭 적용 -->
+            <div class="content-container">
+                <!-- 자유 이동용 인페이지 네비게이션 -->
+                <header class="fixed-header step-chip-bar">
+                    <div class="nav-container">
+                        <div class="nav-buttons">
+                            <button class="nav-btn active" onclick="scrollToSection('step1')">기본정보</button>
+                            <button class="nav-btn" onclick="scrollToSection('step2')">기수/기간</button>
+                            <button class="nav-btn" onclick="scrollToSection('step3')">교육방식/키워드</button>
+                            <button class="nav-btn" onclick="scrollToSection('step4')">가격/상품</button>
+                            <button class="nav-btn" onclick="scrollToSection('step5')">콘텐츠/리뷰</button>
+                            <button class="nav-btn" onclick="scrollToSection('step6')">검토/완료</button>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- 섹션 그리드 - 대시보드와 동일한 반응형 그리드 -->
+                <section class="mt-4 grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+                <!-- STEP 1: 기본정보 -->
+                <div class="step-section" id="step1">
+                    <div class="form-card" style="min-width: 0; border-radius: 1rem; border: 1px solid #e2e8f0; background: white; padding: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);">
+                    <div class="card-header">
+                            <h3 class="card-title" style="margin-bottom: 0.75rem; font-size: 1rem; font-weight: 600; color: #1f2937;">1. 기본정보</h3>
+                            <button class="btn-primary btn-header" id="loadPastCourse">과거 코스 데이터 불러오기</button>
+                    </div>
+                    <div class="card-content">
+                            <div class="form-grid">
+                            <div class="form-group">
+                                    <label for="lectureMethod" class="block text-sm font-medium">
+                                        강의 방식 <span class="text-red-600">*</span>
+                                    </label>
+                                    <select
+                                        id="lectureMethod"
+                                        data-field="lectureMethod"
+                                        class="w-full input-field"
+                                        aria-invalid="false"
+                                        aria-describedby="lectureMethod-error"
+                                    >
+                                        <option value="">선택하세요.</option>
+                                        <option value="online">온라인</option>
+                                        <option value="offline">오프라인</option>
+                                        <option value="hybrid">하이브리드</option>
+                                    </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="courseName">코스명 *</label>
+                                <input type="text" id="courseName" placeholder="코스명을 입력하세요" class="input-field" required>
+                            </div>
+                        </div>
+                            <div class="form-grid">
+                            <div class="form-group">
+                                <label for="courseCode">코스코드 *</label>
+                                <input type="text" id="courseCode" placeholder="코스코드를 입력하세요" class="input-field" required>
+                                    <div class="validation-message" id="courseCodeValidation"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="courseManager">기획담당자 *</label>
+                                    <div class="autocomplete-container">
+                                <input type="text" id="courseManager" placeholder="기획담당자명을 입력하세요" class="input-field" required>
+                                        <div class="autocomplete-dropdown" id="courseManagerDropdown"></div>
+                            </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2: 기수/기간 -->
+                <div class="step-section" id="step2">
+                    <div class="form-card" style="min-width: 0; border-radius: 1rem; border: 1px solid #e2e8f0; background: white; padding: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);">
+                    <div class="card-header">
+                            <h3 class="card-title" style="margin-bottom: 0.75rem; font-size: 1rem; font-weight: 600; color: #1f2937;">2. 기수 / 기간</h3>
+                            <button class="ai-button" id="aiSuggestStep2">
+                            <span class="sparkle-icon">✨</span>
+                                AI 자동 제안
+                        </button>
+                    </div>
+                    <div class="card-content">
+                            <h3 class="section-title">기본정보</h3>
+                            <div class="form-grid">
+                            <div class="form-group">
+                                <label for="batchName">기수명 *</label>
+                                <input type="text" id="batchName" placeholder="기수명을 입력하세요" class="input-field" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="batchCode">기수코드 *</label>
+                                <input type="text" id="batchCode" placeholder="기수코드를 입력하세요" class="input-field" required>
+                            </div>
+                        </div>
+                            <div class="form-grid">
+                            <div class="form-group">
+                                    <label>난이도 *</label>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-item">
+                                            <input type="radio" name="difficulty" value="beginner" required>
+                                            <span class="checkmark"></span>
+                                            <span class="label-text">초급</span>
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="radio" name="difficulty" value="intermediate" required>
+                                            <span class="checkmark"></span>
+                                            <span class="label-text">중급</span>
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="radio" name="difficulty" value="advanced" required>
+                                            <span class="checkmark"></span>
+                                            <span class="label-text">고급</span>
+                                        </label>
+                            </div>
+                        </div>
+                            <div class="form-group">
+                                    <label for="studyPeriod">수강기한 *</label>
+                                    <input type="number" id="studyPeriod" placeholder="90" class="input-field" required>
+                                </div>
+                            </div>
+                            <div class="form-grid">
+                            <div class="form-group">
+                                    <label for="instructor">강사 *</label>
+                                    <div class="autocomplete-container">
+                                        <input type="text" id="instructor" placeholder="강사명을 입력하세요" class="input-field" required>
+                                        <div class="autocomplete-dropdown" id="instructorDropdown"></div>
+                                    </div>
+                                    <div id="instructorList" class="instructor-list"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 3: 교육방식/키워드 -->
+                <div class="step-section" id="step3">
+                    <div class="form-card" style="min-width: 0; border-radius: 1rem; border: 1px solid #e2e8f0; background: white; padding: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);">
+                    <div class="card-header">
+                            <h3 class="card-title" style="margin-bottom: 0.75rem; font-size: 1rem; font-weight: 600; color: #1f2937;">3. 교육방식 / 키워드</h3>
+                            <button class="ai-button" id="aiSuggestStep3">
+                            <span class="sparkle-icon">✨</span>
+                                AI 자동 제안
+                        </button>
+                    </div>
+                    <div class="card-content">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="deliveryType">교육방식 *</label>
+                                    <select id="deliveryType" class="input-field" required>
+                                        <option value="" disabled selected>선택하세요</option>
+                                        <option value="강의">강의</option>
+                                        <option value="부트캠프">부트캠프</option>
+                                        <option value="프로젝트">프로젝트</option>
+                                    </select>
+                                </div>
+                        <div class="form-group">
+                                    <div class="hashtag-editor">
+                                        <div class="hashtag-header">
+                                            <span class="hashtag-label">키워드</span>
+                                            <button type="button" class="ai-suggest-btn" id="aiSuggestKeywords">
+                                                AI 추천 받기
+                                            </button>
+                                        </div>
+                                        <div class="hashtag-container">
+                                            <div class="hashtag-tags" id="hashtagTags"></div>
+                                            <input type="text" id="hashtagInput" placeholder="키워드 입력 후 Enter" class="hashtag-input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 4: 가격/상품 -->
+                <div class="step-section" id="step4">
+                    <div class="form-card" style="min-width: 0; border-radius: 1rem; border: 1px solid #e2e8f0; background: white; padding: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);">
+                    <div class="card-header">
+                            <h3 class="card-title" style="margin-bottom: 0.75rem; font-size: 1rem; font-weight: 600; color: #1f2937;">4. 가격 / 상품</h3>
+                            <button class="ai-button" id="aiSuggestStep4">
+                                <span class="sparkle-icon">✨</span>
+                                AI 자동 제안
+                            </button>
+                    </div>
+                    <div class="card-content">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="price">가격 *</label>
+                                    <input type="number" id="price" placeholder="399000" class="input-field" required>
+                            </div>
+                                <div class="form-group">
+                                    <label for="productSearch">상품 검색</label>
+                                    <div class="autocomplete-container">
+                                        <input type="text" id="productSearch" placeholder="상품명 검색" class="input-field">
+                                        <div class="autocomplete-dropdown" id="productSearchDropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <button type="button" class="nav-btn" id="downloadProducts">엑셀/CSV 파일 내려받기</button>
+                                </div>
+                            </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                <!-- STEP 5: 콘텐츠/리뷰 -->
+                <div class="step-section" id="step5">
+                    <div class="form-card" style="min-width: 0; border-radius: 1rem; border: 1px solid #e2e8f0; background: white; padding: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);">
+                        <div class="card-header">
+                            <h3 class="card-title" style="margin-bottom: 0.75rem; font-size: 1rem; font-weight: 600; color: #1f2937;">5. 콘텐츠 / 리뷰</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <label for="contentOverview">콘텐츠 개요 / 커리큘럼 설명</label>
+                                    <textarea id="contentOverview" placeholder="콘텐츠 개요를 입력하세요" class="input-field" rows="4"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <label for="reviews">리뷰/추천사</label>
+                                    <textarea id="reviews" placeholder="리뷰나 추천사를 입력하세요" class="input-field" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 6: 검토/완료 -->
+                <div class="step-section" id="step6">
+                    <div class="form-card" style="min-width: 0; border-radius: 1rem; border: 1px solid #e2e8f0; background: white; padding: 1rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);">
+                    <div class="card-header">
+                            <h3 class="card-title" style="margin-bottom: 0.75rem; font-size: 1rem; font-weight: 600; color: #1f2937;">6. 검토 / 완료</h3>
+                    </div>
+                    <div class="card-content">
+                            <div class="review-info">
+                                <p>저장을 누르기 전까지 모든 섹션을 자유롭게 이동/수정할 수 있습니다. 저장 시 필요한 항목만 검증합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </section>
+
+            <!-- 하단 고정 저장 바 -->
+            <div class="sticky-save-bar">
+                <div class="save-bar-content">
+                    <button type="button" class="btn-secondary" id="tempSaveBtn">임시저장</button>
+                    <button type="button" class="btn-primary" id="saveBtn">저장</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 과거 코스 데이터 불러오기 모달 -->
+    <div id="pastCourseModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>과거 코스 데이터 불러오기</h3>
+                <button class="close-btn" id="closePastCourseModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="search-container">
+                    <input type="text" id="pastCourseSearch" placeholder="코스명으로 검색..." class="search-input">
+                    <button class="search-btn" id="searchPastCourse" style="margin-top: 0.5cm;">검색</button>
+                </div>
+                <div id="pastCourseList" class="past-course-list">
+                    <!-- 과거 코스 목록이 여기에 표시됩니다 -->
+                </div>
+            </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/course-registration.js"></script>
+</body>
+</html>
